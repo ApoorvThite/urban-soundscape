@@ -29,7 +29,7 @@ def plot_spectrogram(y, sr):
     plt.show()
 
 if __name__ == "__main__":
-    audio_file = "UrbanSound8K/audio/fold1/101415-3-0-2.wav"  # Update this path
+    audio_file = "UrbanSound8K/audio/fold1/101415-3-0-2.wav"  # Change path if needed
     if not os.path.exists(audio_file):
         raise FileNotFoundError(f"File not found: {audio_file}")
 

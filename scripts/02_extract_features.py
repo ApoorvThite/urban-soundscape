@@ -4,15 +4,14 @@ import numpy as np
 import pandas as pd
 from tqdm import tqdm
 
-# Path to UrbanSound8K metadata
+# Paths
 METADATA_PATH = "UrbanSound8K/metadata/UrbanSound8K.csv"
 AUDIO_DIR = "UrbanSound8K/audio"
 
 def extract_features(file_path):
     try:
         y, sr = librosa.load(file_path, sr=None)
-        
-        # Features
+
         rms = np.mean(librosa.feature.rms(y=y))
         zcr = np.mean(librosa.feature.zero_crossing_rate(y))
         spec_centroid = np.mean(librosa.feature.spectral_centroid(y=y, sr=sr))
@@ -25,7 +24,6 @@ def extract_features(file_path):
             "spectral_centroid": spec_centroid
         }
 
-        # Add MFCCs
         for i, coeff in enumerate(mfccs_mean):
             features[f"mfcc_{i+1}"] = coeff
 
@@ -59,4 +57,4 @@ def process_subset(n=100, fold="fold1"):
     print(f"Saved features to {out_path}")
 
 if __name__ == "__main__":
-    process_subset(n=100, fold="fold1")  # You can change n or fold later
+    process_subset(n=100, fold="fold1")

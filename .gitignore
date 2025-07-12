@@ -1,0 +1,4 @@
+UrbanSound8K/audio/
+*.tar.gz
+*.wav
+__pycache__/
